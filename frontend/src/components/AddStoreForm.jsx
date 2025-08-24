@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const AddStoreForm = () => {
-  const [isOpen, setIsOpen] = useState(false); // controls modal/form open
+  const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [loading, setLoading] = useState(false);
@@ -31,7 +31,7 @@ const AddStoreForm = () => {
         setIsOpen(false);
         setName("");
         setAddress("");
-        navigate(0); // refresh dashboard
+        navigate(0);
       } else {
         alert("Failed to add store");
       }

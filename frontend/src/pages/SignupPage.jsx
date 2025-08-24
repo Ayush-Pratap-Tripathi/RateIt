@@ -78,14 +78,11 @@ const SignupPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 py-6">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-6">
-        {/* Title */}
         <h2 className="text-xl font-bold text-center text-gray-800 mb-4">
           Sign Up
         </h2>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Name */}
           <div>
             <label className="block text-gray-600 mb-1 text-sm">Name</label>
             <input
@@ -101,7 +98,6 @@ const SignupPage = () => {
             </p>
           </div>
 
-          {/* Email */}
           <div>
             <label className="block text-gray-600 mb-1 text-sm">Email</label>
             <input
@@ -113,7 +109,6 @@ const SignupPage = () => {
             />
           </div>
 
-          {/* Address */}
           <div>
             <label className="block text-gray-600 mb-1 text-sm">Address</label>
             <textarea
@@ -129,7 +124,6 @@ const SignupPage = () => {
             </p>
           </div>
 
-          {/* Password */}
           <div>
             <label className="block text-gray-600 mb-1 text-sm">Password</label>
             <input
@@ -146,7 +140,6 @@ const SignupPage = () => {
             </p>
           </div>
 
-          {/* Role */}
           <div>
             <label className="block text-gray-600 mb-1 text-sm">Role</label>
             <select
@@ -164,7 +157,6 @@ const SignupPage = () => {
             </select>
           </div>
 
-          {/* Messages */}
           {error && (
             <p className="text-red-600 text-sm font-medium py-1 px-2 bg-red-50 rounded">
               {error}
@@ -176,7 +168,6 @@ const SignupPage = () => {
             </p>
           )}
 
-          {/* Submit */}
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-lg text-sm hover:bg-blue-700 transition"
@@ -185,7 +176,6 @@ const SignupPage = () => {
           </button>
         </form>
 
-        {/* Switch link */}
         <p className="text-center text-gray-600 text-xs mt-4">
           Already have an account?{" "}
           <Link

@@ -45,7 +45,6 @@ const StoreDetails = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <main className="p-6 max-w-6xl mx-auto">
-        {/* Title with Back button */}
         <h2 className="text-3xl font-bold text-gray-800 mb-6 flex items-center gap-4">
           {dashboardData.storeName} Dashboard
           <span

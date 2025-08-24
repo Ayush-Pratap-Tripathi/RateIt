@@ -14,7 +14,7 @@ const LoginPage = () => {
     setError("");
     try {
       await login(email, password);
-      navigate("/dashboard"); // Redirect to the central dashboard redirector
+      navigate("/dashboard");
     } catch (err) {
       setError(
         err.response?.data?.message ||
@@ -26,12 +26,10 @@ const LoginPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
-        {/* Title */}
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Login
         </h2>
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-gray-600 mb-1">Email</label>
@@ -59,7 +57,6 @@ const LoginPage = () => {
             <p className="text-red-600 text-sm font-medium">{error}</p>
           )}
 
-          {/* Submit button */}
           <button
             type="submit"
             className="w-full bg-blue-600 text-white py-2 rounded-lg shadow-md hover:bg-blue-700 transition"
@@ -68,7 +65,6 @@ const LoginPage = () => {
           </button>
         </form>
 
-        {/* Switch link */}
         <p className="text-center text-gray-600 text-sm mt-6">
           Don&apos;t have an account?{" "}
           <Link

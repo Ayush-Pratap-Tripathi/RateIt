@@ -32,12 +32,10 @@ const StoreOwnerDashboard = () => {
     <div className="min-h-screen bg-gray-50">
       <Header />
 
-      {/* Add Store Button/Form */}
       <div className="p-6">
         <AddStoreForm />
       </div>
 
-      {/* My Stores Section */}
       <div className="p-6 max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">My Stores</h1>
 

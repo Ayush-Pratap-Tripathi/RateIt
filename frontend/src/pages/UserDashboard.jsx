@@ -5,7 +5,7 @@ import Header from "../components/Header";
 const UserDashboard = () => {
   const [stores, setStores] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchType, setSearchType] = useState("name"); // 'name' or 'address'
+  const [searchType, setSearchType] = useState("name");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { api } = useAuth();

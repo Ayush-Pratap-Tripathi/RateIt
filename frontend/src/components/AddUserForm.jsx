@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const AddUserForm = () => {
-  const [isOpen, setIsOpen] = useState(false); // controls modal/form open
+  const [isOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -15,7 +15,6 @@ const AddUserForm = () => {
   const { api } = useAuth();
   const navigate = useNavigate();
 
-  // handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");

@@ -17,7 +17,6 @@ export const AuthProvider = ({ children }) => {
     },
   });
 
-  // ✅ define logout first so it’s available inside interceptors
   const logout = () => {
     setToken(null);
     setUser(null);
@@ -25,7 +24,6 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
   };
 
-  // Request interceptor
   api.interceptors.request.use(
     (config) => {
       const token = localStorage.getItem("token");
@@ -37,7 +35,6 @@ export const AuthProvider = ({ children }) => {
     (error) => Promise.reject(error)
   );
 
-  // Response interceptor
   api.interceptors.response.use(
     (response) => response,
     (error) => {
@@ -78,20 +75,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Inside AuthProvider
 const updatePassword = async (oldPassword, newPassword) => {
   try {
     const response = await api.put("/api/users/update-password", {
       oldPassword,
       newPassword,
     });
-    return response.data; // message: "Password updated successfully."
+    return response.data; 
   } catch (error) {
     throw error.response?.data?.message || "Failed to update password.";
   }
 };
 
-// Add it to the context value
 const value = {
   user,
   token,
