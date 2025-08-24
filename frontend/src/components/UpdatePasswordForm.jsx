@@ -10,10 +10,31 @@ const UpdatePasswordForm = ({ onClose }) => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // Password validation function
+  const validatePassword = (password) => {
+    if (password.length < 8 || password.length > 16) {
+      return "Password must be between 8-16 characters";
+    }
+    if (!/[A-Z]/.test(password)) {
+      return "Password must include at least one uppercase letter";
+    }
+    if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+      return "Password must include at least one special character";
+    }
+    return "";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
+
+    // Validate new password
+    const passwordError = validatePassword(newPassword);
+    if (passwordError) {
+      setError(passwordError);
+      return;
+    }
 
     if (newPassword !== retypePassword) {
       setError("New password and retype password do not match.");
@@ -39,32 +60,49 @@ const UpdatePasswordForm = ({ onClose }) => {
       <div className="bg-white p-6 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-xl font-semibold mb-4 text-gray-700">Update Password</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="password"
-            placeholder="Old Password"
-            value={oldPassword}
-            onChange={(e) => setOldPassword(e.target.value)}
-            required
-            className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-          />
-          <input
-            type="password"
-            placeholder="New Password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-            required
-            className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-          />
-          <input
-            type="password"
-            placeholder="Retype New Password"
-            value={retypePassword}
-            onChange={(e) => setRetypePassword(e.target.value)}
-            required
-            className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
-          />
-          {error && <p className="text-red-500">{error}</p>}
-          {success && <p className="text-green-500">{success}</p>}
+          <div>
+            <input
+              type="password"
+              placeholder="Old Password"
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
+              required
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+          
+          <div>
+            <input
+              type="password"
+              placeholder="New Password"
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              required
+              minLength={8}
+              maxLength={16}
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            <p className="text-xs text-gray-500 mt-1 ml-1">
+              8-16 chars, uppercase, special char
+            </p>
+          </div>
+          
+          <div>
+            <input
+              type="password"
+              placeholder="Retype New Password"
+              value={retypePassword}
+              onChange={(e) => setRetypePassword(e.target.value)}
+              required
+              minLength={8}
+              maxLength={16}
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+          </div>
+          
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {success && <p className="text-green-500 text-sm">{success}</p>}
+          
           <div className="flex justify-end gap-2">
             <button
               type="button"
