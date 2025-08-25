@@ -124,8 +124,8 @@ CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
   email VARCHAR(150) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
   address VARCHAR(255) DEFAULT NULL,
+  password VARCHAR(255) NOT NULL,
   role ENUM('ADMIN','USER','STORE_OWNER') DEFAULT 'USER',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -133,9 +133,10 @@ CREATE TABLE users (
 -- Stores table
 CREATE TABLE stores (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  owner_id INT NULL,
   name VARCHAR(200) NOT NULL,
+  email VARCHAR(150) NOT NULL UNIQUE,
   address VARCHAR(255) NOT NULL,
+  owner_id INT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (owner_id) REFERENCES users(id) ON DELETE SET NULL
 );
@@ -146,7 +147,6 @@ CREATE TABLE ratings (
   store_id INT NOT NULL,
   user_id INT NOT NULL,
   rating TINYINT NOT NULL, -- 1-5
-  comment TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY user_store_unique (user_id, store_id),
   FOREIGN KEY (store_id) REFERENCES stores(id) ON DELETE CASCADE,
