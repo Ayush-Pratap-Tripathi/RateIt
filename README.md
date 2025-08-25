@@ -10,7 +10,6 @@ RateIt is a full-stack web application that provides a role-based store rating p
 
 * Role-based authentication (ADMIN, STORE\_OWNER, USER) using JWT
 * Secure password hashing with `bcryptjs`
-* CRUD operations for users and stores (admin + store-owner flows)
 * Users can submit or update ratings for stores
 * Admin dashboard with aggregate stats (stores, users, ratings)
 * Store-owner dashboard to view store-specific ratings and stats
@@ -233,48 +232,3 @@ curl -X POST http://localhost:5000/api/stores/1/ratings \
 
 ---
 
-## Known gaps / Developer notes (important)
-
-During inspection of the repository I observed the following:
-
-* Several backend controller files contain placeholder ellipses (`...`) or shortened sections. Some handler logic appears trimmed in the shipped files. You should review `backend/src/controllers/*.js` and finish any incomplete logic before deploying.
-* There are no database migration scripts in the repository (no SQL/migration automation). I added a recommended SQL schema in this README that you can run manually.
-* Tests are not included. Consider adding unit/integration tests (Jest / supertest) for the API.
-
-If you want, I can:
-
-* Generate a SQL migration file for the schema above.
-* Expand the incomplete controller logic into full implementations (register/login, rating logic, admin stats) based on how the frontend expects responses.
-* Create seed scripts (create an ADMIN user) so you can jump straight into the admin dashboard.
-
-> NOTE: I did not modify repository files — this README documents what I found and provides guidance to run and complete the app.
-
----
-
-## Next steps / suggested improvements
-
-* Add database migrations & seeders (e.g., `knex` or `sequelize` CLI).
-* Harden security: strong `JWT_SECRET`, rate limiting, input validation (e.g., `express-validator`), stricter CORS origin policy in production.
-* Add unit/integration tests and CI pipeline.
-* Add file-based configuration or Docker Compose for easy environment setup.
-* Add pagination and sorting to `GET /api/stores`/`GET /api/users`.
-
----
-
-## Contribution
-
-If you'd like to contribute improvements, fork the repo, create a branch, and open a PR. Please include clear descriptions for controller changes and any DB migrations.
-
----
-
-## License
-
-(Choose a license and add a `LICENSE` file. MIT is a common choice.)
-
----
-
-*If you'd like, I can now:*
-
-* generate SQL migration files and a seed script,
-* create a polished `backend/.env.example` and `frontend/.env.example`,
-* or convert incomplete controller placeholders into full working code — tell me which of these you want and I'll add it directly to the repo.
