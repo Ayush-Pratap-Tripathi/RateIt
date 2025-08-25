@@ -97,6 +97,7 @@ DB_USER=root
 DB_PASSWORD=your_db_password
 DB_NAME=rateit_db
 JWT_SECRET=a_strong_secret_key
+PORT=5000
 ```
 
 **Frontend `.env` (frontend/.env already contains a default)**
